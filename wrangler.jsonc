@@ -1,0 +1,28 @@
+{
+  // wrangler.jsonc for deploy sveltekit to cloudflare
+  "name": "pdp",
+  "main": ".svelte-kit/cloudflare/_worker.js",
+  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_date": "2024-10-22",
+  "assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"observability": {
+		"enabled": true
+	},
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "think",
+      "database_id": "aa8eef38-44b8-46e3-804c-d683fc5e177d",
+      "migrations_dir": "drizzle/migrations"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "thinkvector.org",
+      "custom_domain": true
+    }
+  ]
+} 

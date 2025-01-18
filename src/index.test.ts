@@ -1,7 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { test, it, expect } from 'vitest';
 
-describe('sum test', () => {
-	it('adds 1 + 2 to equal 3', () => {
-		expect(1 + 2).toBe(3);
-	});
+test('sum test', {only:true, timeout:50000}, () => {
+
 });

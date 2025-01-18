@@ -4,6 +4,8 @@ node_modules
 .vercel
 /.svelte-kit
 /build
+/data
+identifier.sqlite
 .idea
 .wrangler
 wrangler.toml
@@ -21,5 +23,4 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-#cloudflare
-.wrangler
+.dev.vars

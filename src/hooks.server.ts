@@ -1,31 +1,33 @@
-import {z} from "zod";
-import {strEqIgnCase} from "$lib/client/common";
-import {drizzle} from 'drizzle-orm/d1';
+import { sequence } from "@sveltejs/kit/hooks";
 
-/** @type {import('@sveltejs/kit').HandleServerError} */
-export function handleError(input: any) {
-    const message = input.error.message;
-    return { message };
-}
+export const handleError = ({ error }:any) => {
+    return { message: error};
+};
 
-const validateJsonAndReturn = (str: string|null|undefined) => {
-    try {
-        return JSON.parse(str as string)
-    } catch (e) {
-        return false;
-    }
-}
+// const setupDatabase: Handle = async ({ event, resolve }) => {
+//     const DB = event.platform?.env?.DB;
+//     if (!DB) throw new Error("DB not found");
+//     event.locals.db = drizzle(DB);
+//     return resolve(event);
+// };
 
-const publicPaths = ['/public', '/docs', '/stripe', '/auth', '/cron', '/txt', '/blog','/books','/learn'];
+// const handleUserSession: Handle = async ({ event, resolve }) => {
+//     let userId = event.cookies.get(USER_ID);
 
-export const handle =  async ({ event, resolve }) => {
-    const DB = event.platform?.env?.DB;
-    if (!DB) throw new Error("DB is not set");
-    event.locals.db = drizzle(DB);
-    const isPublicRoute = publicPaths.some(path => event.url.pathname.startsWith(path)
-        || (strEqIgnCase(event.url.pathname.toLowerCase(),'/')));
-    if (isPublicRoute) {
-        return await resolve(event);
-    }
-    return await resolve(event)
-}
+//     if (!userId) {
+//         userId = crypto.randomUUID();
+//         event.cookies.set(USER_ID, userId, {
+//             path: '/',
+//             httpOnly: true,
+//             secure: true,
+//             sameSite: 'lax',
+//             maxAge: 60 * 60 * 24 * 365 // 1 year
+//         });
+//     }
+//     event.locals.userId = userId;
+//     return resolve(event);
+// };
+
+export const handle = sequence(
+    // setupDatabase
+);

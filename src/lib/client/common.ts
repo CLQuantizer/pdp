@@ -1,5 +1,5 @@
 export const API="/private/api";
-export const SENTENCE_API = API + "/sent";
+export const USER_ID = "user_id";
 export const FREE_PAGE_LIMIT = 10;
 export const strEqIgnCase = (a: string | null | undefined, b: string | null | undefined): boolean =>
     !!a && !!b && a.toLowerCase() === b.toLowerCase();
@@ -35,11 +35,6 @@ export enum contextStatusEnum {
     PUBLISHED = 1,
     DELETED = 2,
 }
-
-export const ORIGIN = import.meta.env.VITE_ORIGIN;
-
-// add stacks between https:// and the domain
-export const BLOGS_URL = ORIGIN.replace("//", "//stacks.")+"/p/a-french-reading-app-for-2024";
 
 export type POS_TAG = "NOUN" | "VERB" | "ADJ" | "ADV" | "PRON" | "DET" | "ADP" | "NUM" | "CONJ" | "PUNCT";
 
