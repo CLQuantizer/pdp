@@ -7,10 +7,12 @@
       <!-- Hero Section -->
       <div class="text-center mb-4">
         <h1 class="text-3xl font-bold mb-2">
-          <p>The Most Revolutionary Philosophy Since Plato</p>
+          <p>Philosophy For the AI Age</p>
         </h1>
         <p class="text-muted-foreground text-base">
-          How Rumelhart, Hinton, and McClelland's Parallel Distributed Processing model transformed our understanding of consciousness and cognition
+          How Rumelhart, Hinton, and McClelland's Parallel Distributed Processing model transformed our understanding of consciousness and cognition.
+          <br>
+          It is the most revolutionary philosophy since Plato.
         </p>
       </div>
 
