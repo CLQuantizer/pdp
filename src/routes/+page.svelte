@@ -7,7 +7,7 @@
       <!-- Hero Section -->
       <div class="text-center mb-4">
         <h1 class="text-3xl font-bold mb-2">
-          <marquee>The Most Revolutionary Philosophy Since Plato</marquee>
+          <p>The Most Revolutionary Philosophy Since Plato</p>
         </h1>
         <p class="text-muted-foreground text-base">
           How Rumelhart, Hinton, and McClelland's Parallel Distributed Processing model transformed our understanding of consciousness and cognition
