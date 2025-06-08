@@ -1,6 +1,6 @@
 {
   // wrangler.jsonc for deploy sveltekit to cloudflare
-  "name": "pdp",
+  "name": "think",
   "main": ".svelte-kit/cloudflare/_worker.js",
   "compatibility_flags": ["nodejs_compat"],
   "compatibility_date": "2024-10-22",
