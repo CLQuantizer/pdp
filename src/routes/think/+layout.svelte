@@ -1,11 +1,12 @@
 <script lang="ts">
-    import "../app.css";
+    import "../../app.css";
     import {popStore} from "$lib/store";
     import {ModeWatcher, toggleMode} from "mode-watcher";
     import {Root, Title, Description} from "$lib/components/ui/alert";
     import {MoonStar, Sun} from "lucide-svelte";
     import type {Hypothesis} from "$lib/client/schemas";
-    export let data../$types.js
+    
+    export let data
     $: hypotheses = data.hypotheses as Hypothesis[]
 </script>
 
