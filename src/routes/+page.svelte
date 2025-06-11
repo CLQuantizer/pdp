@@ -37,19 +37,19 @@
         <div class="space-y-3">
           <div class="border-l-2 border-primary pl-3">
             <h3 class="text-foreground font-medium">A new theory of mind that transcends Cartesian dualism</h3>
-            <p class="text-muted-foreground text-sm mt-1">The PDP model dissolves the traditional mind-body distinction by showing how mental states emerge from distributed neural activity.</p>
+            <p class="text-muted-foreground mt-1">The PDP model dissolves the traditional mind-body distinction by showing how mental states emerge from distributed neural activity.</p>
           </div>
           <div class="border-l-2 border-primary pl-3">
             <h3 class="text-foreground font-medium">Emergence of consciousness from simple interactions</h3>
-            <p class="text-muted-foreground text-sm mt-1">Complex conscious experience arises naturally from the parallel processing of simple units, without requiring a separate mental substance.</p>
+            <p class="text-muted-foreground mt-1">Complex conscious experience arises naturally from the parallel processing of simple units, without requiring a separate mental substance.</p>
           </div>
           <div class="border-l-2 border-primary pl-3">
             <h3 class="text-foreground font-medium">A bridge between materialism and idealism</h3>
-            <p class="text-muted-foreground text-sm mt-1">PDP shows how physical processes can give rise to mental phenomena while maintaining the reality of both.</p>
+            <p class="text-muted-foreground mt-1">PDP shows how physical processes can give rise to mental phenomena while maintaining the reality of both.</p>
           </div>
           <div class="border-l-2 border-primary pl-3">
             <h3 class="text-foreground font-medium">A new understanding of free will and determinism</h3>
-            <p class="text-muted-foreground text-sm mt-1">The parallel distributed nature of decision-making processes reconciles determinism with genuine agency.</p>
+            <p class="text-muted-foreground mt-1">The parallel distributed nature of decision-making processes reconciles determinism with genuine agency.</p>
           </div>
         </div>
       </div>
@@ -78,45 +78,51 @@
       </table>
 
       <!-- Classical Problems Section -->
-      <table class="w-full mb-4 border border-border bg-card text-card-foreground">
-        <tr>
-          <td colspan="2" class="p-2">
-            <h2 class="text-xl font-semibold text-center">PDP: The Universal Philosophical Solution</h2>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/2 p-2 align-top">
-            <h3 class="text-lg font-semibold mb-2">Classical Problems</h3>
-            <ul class="text-muted-foreground text-sm list-disc pl-4 space-y-1">
-              <li>The Mind-Body Problem</li>
-              <li>The Problem of Universals</li>
-              <li>The Ship of Theseus</li>
-              <li>The Problem of Induction</li>
-              <li>The Gettier Problem</li>
-              <li>The Problem of Other Minds</li>
-              <li>The Sorites Paradox</li>
-              <li>The Problem of Free Will</li>
-              <li>The Problem of Personal Identity</li>
-              <li>The Problem of Qualia</li>
-            </ul>
-          </td>
-          <td class="w-1/2 p-2 align-top">
-            <h3 class="text-lg font-semibold mb-2">PDP Solutions</h3>
-            <ul class="text-muted-foreground text-sm list-disc pl-4 space-y-1">
-              <li>Emergent properties from distributed processing</li>
-              <li>Pattern recognition across distributed representations</li>
-              <li>Continuous state space preserving identity</li>
-              <li>Statistical learning from distributed patterns</li>
-              <li>Knowledge as distributed activation patterns</li>
-              <li>Shared neural architecture enabling empathy</li>
-              <li>Fuzzy boundaries in distributed representations</li>
-              <li>Emergent decision-making from parallel processes</li>
-              <li>Continuous self-updating distributed states</li>
-              <li>Qualia as unique activation patterns</li>
-            </ul>
-          </td>
-        </tr>
-      </table>
+      <div class="w-full mb-4 p-4 border border-border bg-card text-card-foreground">
+        <h2 class="text-xl font-semibold text-center mb-4">PDP: The Universal Philosophical Solution</h2>
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Mind-Body Problem</h3>
+            <p class="text-muted-foreground text-sm">Emergent properties from distributed processing</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Problem of Universals</h3>
+            <p class="text-muted-foreground text-sm">Pattern recognition across distributed representations</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Ship of Theseus</h3>
+            <p class="text-muted-foreground text-sm">Continuous state space preserving identity</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Problem of Induction</h3>
+            <p class="text-muted-foreground text-sm">Statistical learning from distributed patterns</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Gettier Problem</h3>
+            <p class="text-muted-foreground text-sm">Knowledge as distributed activation patterns</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Problem of Other Minds</h3>
+            <p class="text-muted-foreground text-sm">Shared neural architecture enabling empathy</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Sorites Paradox</h3>
+            <p class="text-muted-foreground text-sm">Fuzzy boundaries in distributed representations</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Problem of Free Will</h3>
+            <p class="text-muted-foreground text-sm">Emergent decision-making from parallel processes</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Problem of Personal Identity</h3>
+            <p class="text-muted-foreground text-sm">Continuous self-updating distributed states</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold">The Problem of Qualia</h3>
+            <p class="text-muted-foreground text-sm">Qualia as unique activation patterns</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Further Reading -->
       <div class="text-center">
