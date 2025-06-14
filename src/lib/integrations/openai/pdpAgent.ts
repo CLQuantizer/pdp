@@ -42,7 +42,7 @@ export const runPdpAgent = async (input: string) => {
 
 export const givePdpWisdom = async (input: string) => {
     const response = await openai.responses.create({
-        model: "gpt-o3-mini", 
+        model: "gpt-4o", 
         input,
         tools: [{
             type: "file_search",
