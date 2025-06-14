@@ -1,25 +1,76 @@
 <script lang="ts">
 	import { marked } from 'marked';
-	import { enhance } from '$app/forms';
+	import { onMount } from 'svelte';
+
 	export let data;
-	export let form;
 
 	let argumentsList = data.arguments;
 	let editingId: number | null = null;
+	let newArgumentText = '';
+	let isLoading = false;
+	let error: string | null = null;
 
-	// Reactively update the list when form actions are successful
-	$: {
-		if (form?.success) {
-			if (form.newArgument) {
-				argumentsList = [...argumentsList, form.newArgument];
-			} else if (form.updatedArgument) {
-				argumentsList = argumentsList.map((arg) =>
-					arg.id === form.updatedArgument.id ? form.updatedArgument : arg
-				);
-				editingId = null;
-			}
-			// For delete, we rely on a page reload or manual list update.
-			// A full page invalidation is easier here.
+	async function createArgument() {
+		isLoading = true;
+		error = null;
+		const response = await fetch('/api/pdp', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ argument: newArgumentText })
+		});
+		isLoading = false;
+
+		if (response.ok) {
+			const newArgument = await response.json();
+			argumentsList = [...argumentsList, newArgument];
+			newArgumentText = '';
+		} else {
+			const res = await response.json();
+			error = res.error || 'Failed to create argument.';
+		}
+	}
+
+	async function updateArgument(event: Event & { currentTarget: HTMLFormElement }) {
+		if (editingId === null) return;
+		isLoading = true;
+		error = null;
+
+		const formData = new FormData(event.currentTarget);
+		const id = Number(formData.get('id'));
+		const argument = formData.get('argument') as string;
+		const pdp = formData.get('pdp') as string;
+		const status = Number(formData.get('status'));
+
+		const response = await fetch(`/api/pdp/${id}`, {
+			method: 'PATCH',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ argument, pdp, status })
+		});
+		isLoading = false;
+
+		if (response.ok) {
+			const updatedArgument = await response.json();
+			argumentsList = argumentsList.map((arg: any) => (arg.id === id ? updatedArgument : arg));
+			editingId = null;
+		} else {
+			const res = await response.json();
+			error = res.error || 'Failed to update argument.';
+		}
+	}
+
+	async function deleteArgument(id: number) {
+		isLoading = true;
+		error = null;
+		const response = await fetch(`/api/pdp/${id}`, {
+			method: 'DELETE'
+		});
+		isLoading = false;
+
+		if (response.ok) {
+			argumentsList = argumentsList.filter((arg: any) => arg.id !== id);
+		} else {
+			const res = await response.json();
+			error = res.error || 'Failed to delete argument.';
 		}
 	}
 </script>
@@ -28,108 +79,120 @@
 	<title>PDP Arguments</title>
 </svelte:head>
 
-<main class="container mx-auto p-4">
+<main class="container mx-auto p-4 bg-background text-foreground">
 	<h1 class="text-2xl font-bold mb-4">PDP Arguments</h1>
+
+	{#if error}
+		<div
+			class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+			role="alert"
+		>
+			<span class="font-medium">Error:</span>
+			{error}
+		</div>
+	{/if}
 
 	<section class="mb-8">
 		<h2 class="text-xl font-semibold mb-2">Create New Argument</h2>
-		<form method="POST" action="?/create" use:enhance class="bg-white p-4 rounded shadow">
-			<label for="argument" class="block mb-2">Argument/Problem/Proposition:</label>
+		<form on:submit|preventDefault={createArgument} class="bg-card p-4 rounded-lg border">
+			<label for="argument" class="block mb-2 font-medium">Argument/Problem/Proposition:</label>
 			<textarea
 				id="argument"
-				name="argument"
+				bind:value={newArgumentText}
 				rows="4"
 				required
-				class="w-full p-2 border rounded"
+				class="w-full p-2 bg-input border rounded-md"
+				disabled={isLoading}
 			></textarea>
-			<button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-				>Get PDP interpretation & Save</button
+			<button
+				type="submit"
+				class="mt-2 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+				disabled={isLoading}
 			>
+				{#if isLoading}
+					<span>Processing...</span>
+				{:else}
+					<span>Get PDP interpretation & Save</span>
+				{/if}
+			</button>
 		</form>
-		{#if form?.missing}
-			<p class="text-red-500 mt-2">Argument text is required.</p>
-		{/if}
-		{#if form?.error}
-			<p class="text-red-500 mt-2">{form.error}</p>
-		{/if}
 	</section>
 
-	<hr class="my-8" />
+	<hr class="my-8 border-border" />
 
 	<section>
 		<h2 class="text-xl font-semibold mb-2">Existing Arguments</h2>
 		{#each argumentsList as arg (arg.id)}
-			<div class="bg-white p-4 rounded shadow mb-4">
+			<div class="bg-card p-4 rounded-lg border mb-4">
 				{#if editingId === arg.id}
-					<form method="POST" action="?/update" use:enhance>
+					<form on:submit|preventDefault={updateArgument}>
 						<input type="hidden" name="id" value={arg.id} />
-						<label for="edit-argument-{arg.id}" class="block mb-2">Argument:</label>
-						<textarea id="edit-argument-{arg.id}" name="argument" rows="2" class="w-full p-2 border rounded"
-							>{arg.argument}</textarea
-						>
+						<label for="edit-argument-{arg.id}" class="block mb-2 font-medium">Argument:</label>
+						<textarea
+							id="edit-argument-{arg.id}"
+							name="argument"
+							rows="2"
+							class="w-full p-2 bg-input border rounded-md"
+							value={arg.argument}
+						></textarea>
 
-						<label for="edit-pdp-{arg.id}" class="block mt-4 mb-2">PDP View:</label>
-						<textarea id="edit-pdp-{arg.id}" name="pdp" rows="10" class="w-full p-2 border rounded"
-							>{arg.pdp}</textarea
-						>
+						<label for="edit-pdp-{arg.id}" class="block mt-4 mb-2 font-medium">PDP View:</label>
+						<textarea
+							id="edit-pdp-{arg.id}"
+							name="pdp"
+							rows="10"
+							class="w-full p-2 bg-input border rounded-md"
+							value={arg.pdp}></textarea>
 
-						<label for="edit-status-{arg.id}" class="block mt-4 mb-2">Status:</label>
+						<label for="edit-status-{arg.id}" class="block mt-4 mb-2 font-medium">Status:</label>
 						<input
 							type="number"
 							id="edit-status-{arg.id}"
 							name="status"
 							value={arg.status}
-							class="w-full p-2 border rounded"
+							class="w-full p-2 bg-input border rounded-md"
 						/>
 
 						<div class="flex gap-2 mt-4">
 							<button
 								type="submit"
-								class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Save</button
+								class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
 							>
+								Save
+							</button>
 							<button
 								type="button"
 								on:click={() => (editingId = null)}
-								class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Cancel</button
+								class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
 							>
+								Cancel
+							</button>
 						</div>
 					</form>
 				{:else}
 					<h3 class="text-lg font-bold">{arg.argument}</h3>
-					<div class="prose mt-2 p-2 bg-gray-50 rounded">
+					<div class="prose dark:prose-invert mt-2 p-2 bg-muted rounded-md">
 						{@html marked(arg.pdp || '')}
 					</div>
-					<small class="block text-gray-500 mt-2"
-						>Status: {arg.status} | Created: {new Date(arg.createdAt).toLocaleString()} | Updated: {new
-							Date(arg.updatedAt).toLocaleString()}</small
+					<small class="block text-muted-foreground mt-2"
+						>Status: {arg.status} | Created: {new Date(
+							arg.createdAt
+						).toLocaleString()} | Updated: {new Date(arg.updatedAt).toLocaleString()}</small
 					>
 					<div class="flex gap-2 mt-4">
 						<button
 							on:click={() => (editingId = arg.id)}
-							class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Edit</button
+							class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
 						>
-						<form
-							method="POST"
-							action="?/delete"
-							use:enhance={() => {
-								// Optimistic UI update for deletion
-								argumentsList = argumentsList.filter((a) => a.id !== arg.id);
-								return async ({ result }) => {
-									if (result.type === 'error') {
-										// if it fails, put it back.
-										// A proper app would use invalidateAll() or similar
-										// For now, this is simple.
-										argumentsList = [...argumentsList, arg].sort((a, b) => a.id - b.id);
-									}
-								};
-							}}
+							Edit
+						</button>
+						<button
+							on:click={() => deleteArgument(arg.id)}
+							class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground hover:bg-destructive/90 h-10 px-4 py-2"
+							disabled={isLoading}
 						>
-							<input type="hidden" name="id" value={arg.id} />
-							<button
-								type="submit"
-								class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Delete</button
-							>
-						</form>
+							Delete
+						</button>
 					</div>
 				{/if}
 			</div>
