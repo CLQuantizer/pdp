@@ -48,6 +48,7 @@
 		"drizzle-zod": "^0.5.1",
 		"ky": "^1.7.1",
 		"lucide-svelte": "^0.437.0",
+		"marked": "^15.0.12",
 		"mode-watcher": "^0.4.1",
 		"openai": "^5.1.1",
 		"stripe": "^16.9.0",
