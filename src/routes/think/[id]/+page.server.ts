@@ -1,4 +1,4 @@
-import {getUserHypothesisById} from "$lib/server/db/queries";
+import {getUserHypothesisById} from "$lib/server/db/schema";
 import {z} from "zod";
 import {redirect} from "@sveltejs/kit";
 

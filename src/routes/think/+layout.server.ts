@@ -1,4 +1,4 @@
-import {getUserHypotheses} from "$lib/server/db/queries";
+import {getUserHypotheses} from "$lib/server/db/schema";
 
 export const load = async ({ locals }) => {
     const userId = locals.userId;
