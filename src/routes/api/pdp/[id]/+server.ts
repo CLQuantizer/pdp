@@ -1,9 +1,10 @@
-import { d1 } from '$lib/server/db';
+import { getD1 } from '$lib/server/db';
 import { deleteArgument, updateArgument } from '$lib/server/db/schema';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
 // Update an argument
 export const PATCH: RequestHandler = async ({ request, params }) => {
+    const d1 = getD1();
     try {
         const id = Number(params.id);
         if (isNaN(id)) {

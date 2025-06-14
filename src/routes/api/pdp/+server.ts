@@ -2,10 +2,11 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 import { runPdpAgent } from '$lib/integrations/openai/pdpAgent';
 import { createArgument } from '$lib/server/db/schema';
-import { d1 } from '$lib/server/db';
 import { hashText } from '$lib/server/services/hash';
+import { getD1 } from '$lib/server/db';
 
 export const POST: RequestHandler = async ({ request }) => {
+    const d1 = getD1();
     try {
         const body = await request.json();
         const { argument } = body;
