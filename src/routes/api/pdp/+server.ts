@@ -19,7 +19,10 @@ export const POST: RequestHandler = async ({ request }) => {
 
         const pdpResponse = await runPdpAgent(processedArgument);
 
+        console.log('PDP Agent Response:', JSON.stringify(pdpResponse, null, 2));
+
         if (!pdpResponse || !(pdpResponse.output as any)[0].pdp) {
+            console.error('Failed to get PDP interpretation from response:', pdpResponse);
             return json({ error: 'Failed to get PDP interpretation' }, { status: 500 });
         }
 
