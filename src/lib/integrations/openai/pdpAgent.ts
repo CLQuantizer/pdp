@@ -1,11 +1,11 @@
 import OpenAI from "openai";
-import {OPENAI_API_KEY, AI_GATEWAY} from "$env/static/private";
+import {OPENAI_API_KEY} from "$env/static/private";
 import { Agent, fileSearchTool, setDefaultOpenAIClient } from '@openai/agents';
 import { run } from '@openai/agents';
 import z from "zod";
 
 
-const openai = new OpenAI({apiKey:OPENAI_API_KEY, baseURL:AI_GATEWAY});
+const openai = new OpenAI({apiKey:OPENAI_API_KEY});
 setDefaultOpenAIClient(openai);
 
 const argumetnSchema = z.object({
