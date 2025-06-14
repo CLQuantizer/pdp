@@ -29,6 +29,10 @@ export const getUserHypotheses = async (userId:string, db:DrizzleD1Database) =>
 export const getUserHypothesisById = async (userId:string, id:number, db:DrizzleD1Database) =>
     await db.select().from(hypothesesTable).where(and(eq(hypothesesTable.userId, userId), eq(hypothesesTable.id, id))).then(h=>h[0]);
 
+export const getArgumentByHash = async (hash: string, db: DrizzleD1Database) => {
+    return db.select().from(argumentsTable).where(eq(argumentsTable.hash, hash)).then(res => res[0]);
+}
+
 export const createArgument = async (data: { argument: string, pdp: string, status: number, hash: string}, db: DrizzleD1Database) => {
     return db.insert(argumentsTable).values({
         ...data,

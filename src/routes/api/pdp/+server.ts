@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 import { runPdpAgent } from '$lib/integrations/openai/pdpAgent';
-import { createArgument } from '$lib/server/db/schema';
+import { createArgument, getArgumentByHash } from '$lib/server/db/schema';
 import { getD1 } from '$lib/server/db';
 import { hashText } from '$lib/server/services/hash';
 
@@ -17,6 +17,12 @@ export const POST: RequestHandler = async ({ request }) => {
 
         const processedArgument = argument.trim().toLowerCase();
         const argumentHash = hashText(processedArgument);
+
+        const existingArgument = await getArgumentByHash(argumentHash, d1);
+
+        if (existingArgument) {
+            return json(existingArgument, { status: 200 });
+        }
 
         const pdpResponse = await runPdpAgent(processedArgument);
 
