@@ -1,5 +1,6 @@
-<script>
-    // No script needed for this static page
+<script lang="ts">
+    import { marked } from 'marked';
+    export let data;
 </script>
 <div>
   <div class="bg-background text-foreground">
@@ -52,6 +53,33 @@
             <p class="text-muted-foreground mt-1">The parallel distributed nature of decision-making processes reconciles determinism with genuine agency.</p>
           </div>
         </div>
+      </div>
+
+      <!-- Recent Arguments Section -->
+      <div class="w-full mb-4 p-4 border border-border bg-card text-card-foreground">
+        <h2 class="text-xl font-semibold mb-2">Recent PDP Discussions</h2>
+        <div class="space-y-4">
+         {#if data.recentArguments && data.recentArguments.length > 0}
+            {#each data.recentArguments as arg (arg.id)}
+              <div class="p-2 rounded-lg border">
+                <h3 class="text-lg font-bold">{arg.argument}</h3>
+                <div class="prose dark:prose-invert mt-2 p-2 bg-muted rounded-md max-h-40 overflow-y-auto">
+                  {@html marked(arg.pdp || '')}
+                </div>
+                <small class="block text-muted-foreground mt-2"
+                  >Created: {new Date(arg.createdAt).toLocaleString()}</small
+                >
+              </div>
+            {/each}
+          {:else}
+            <p>No recent discussions. Be the first to start one!</p>
+          {/if}
+        </div>
+         <div class="text-center mt-4">
+              <a href="/pdp" class="inline-block px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md text-sm">
+                Explore All Arguments
+              </a>
+          </div>
       </div>
 
       <!-- Impact Section -->

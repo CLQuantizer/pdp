@@ -1,6 +1,6 @@
 import {sqliteTable, text, integer, } from "drizzle-orm/sqlite-core";
 import type {DrizzleD1Database} from "drizzle-orm/d1/driver";
-import {and, eq} from "drizzle-orm";
+import {and, eq, desc} from "drizzle-orm";
 
 export const hypothesesTable = sqliteTable('hypotheses', {
     id: integer('id').primaryKey(),
@@ -45,8 +45,12 @@ export const getArgumentById = async (id: number, db: DrizzleD1Database) => {
     return db.select().from(argumentsTable).where(eq(argumentsTable.id, id)).then(res => res[0]);
 }
 
-export const listArguments = async (db: DrizzleD1Database) => {
-    return db.select().from(argumentsTable).all();
+export const listArguments = async (db: DrizzleD1Database, page = 1, pageSize = 10) => {
+    return db.select().from(argumentsTable)
+    .orderBy(desc(argumentsTable.createdAt))
+    .limit(pageSize)
+    .offset((page - 1) * pageSize)
+    .all();
 }
 
 export const updateArgument = async (id: number, data: { argument?: string, pdp?: string, status?: number, hash?: string }, db: DrizzleD1Database) => {
