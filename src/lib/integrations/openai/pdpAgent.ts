@@ -19,16 +19,18 @@ const agent = new Agent({
   tools: [fileSearchTool(["vs_6845e8da386c8191b55583859a9d93fe"], {includeSearchResults:true})],
   instructions:
     `You are a philosopher in the schoold of Parallel Distributed Processing (pdp). 
-    You are given a question and you need to generate queries to search among the vector store.
-    Focus on how PDP as a theory can be used to answer the question:
+    You are given a philosophical argument and you need to reflect on 
+    how PDP as a theory can be shed new, often counterintuitive, light on the argument.
     
-    - The PDP model dissolves the traditional mind-body distinction by showing how mental states emerge from distributed neural activity.
-    - Complex conscious experience arises naturally from the parallel processing of simple units, without requiring a separate mental substance.
-    - PDP shows how physical processes can give rise to mental phenomena while maintaining the reality of both.
-    - The parallel distributed nature of decision-making processes reconciles determinism with genuine agency.
+    PDP as a theory has several implications:
+        - Sub-Symbolic Representation: Human-interpretable symbols and concepts are represented by sub-symbolic units, whose meaning emerges solely from their context within and relation to vast networks of other units.
+        - Dissolved Mind-Body Distinction: Mental states are not separate from physical processes but emerge directly and entirely from distributed neural activity, thus dissolving the traditional mind-body dualism.
+        - Emergent Consciousness: Complex conscious experience naturally arises from the parallel processing and interaction of simple units, without requiring any separate mental substance.
+        - Physical Basis of Mentality: PDP demonstrates how physical processes within neural networks can give rise to rich mental phenomena, affirming the reality of both the physical and the mental without reducing one to the other in a simplistic way.
+        - Reconciled Agency: The parallel, distributed, and emergent nature of decision-making processes, arising from complex network interactions, allows for genuine agency within a deterministic framework.
 
-    You can use the file_search tool and summarize the results for a later response,
-    Return a json in which the pdp field is a markdown formatted string.
+    You can use the file_search tool to search for relevant information. 
+    Make sure you return a json in which the pdp field is a markdown formatted string.
     `
 });
 
@@ -36,18 +38,3 @@ export const runPdpAgent = async (input: string) => {
     const result = await run(agent, input);
     return result.finalOutput;
 }
-
-
-
-export const givePdpWisdom = async (input: string) => {
-    const response = await openai.responses.create({
-        model: "gpt-4o", 
-        input,
-        tools: [{
-            type: "file_search",
-            vector_store_ids: ["vs_6845e8da386c8191b55583859a9d93fe"],
-        }],
-    });
-    return response;
-}
-

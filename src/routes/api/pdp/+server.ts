@@ -21,7 +21,7 @@ export const POST: RequestHandler = async ({ request }) => {
         const existingArgument = await getArgumentByHash(argumentHash, d1);
 
         if (existingArgument) {
-            return json(existingArgument, { status: 200 });
+            return json(existingArgument);
         }
 
         const pdpResponse = await runPdpAgent(processedArgument);

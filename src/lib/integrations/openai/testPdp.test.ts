@@ -1,10 +1,5 @@
 import { test } from "vitest";
-import { givePdpWisdom, runPdpAgent } from "./pdpAgent";
-
-test("test pdp", {only:true, timeout:100000}, async () => {
-    const result = await givePdpWisdom("Why is pdp better than Plato")
-    console.log("result:", JSON.stringify(result, null, 2))
-})
+import { runPdpAgent } from "./pdpAgent";
 
 test("test agent", {only:true, timeout:100000}, async () => {
     const result = await runPdpAgent("The Chinese Room thought experiment")
