@@ -20,14 +20,14 @@ export const POST: RequestHandler = async ({ request }) => {
 
         const pdpResponse = await runPdpAgent(processedArgument);
 
-        if (!pdpResponse || !(pdpResponse.output as any)[0].pdp) {
-            console.error('Failed to get PDP interpretation from response:', pdpResponse);
+        if (!pdpResponse) {
+            console.error('Failed to get PDP interpretation from response:', JSON.stringify(pdpResponse, null, 2));
             return json({ error: 'Failed to get PDP interpretation' }, { status: 500 });
         }
 
         const dataToInsert = {
             argument: processedArgument,
-            pdp: (pdpResponse.output as any)[0].pdp,
+            pdp: pdpResponse.pdp,
             status: 0, // default status
             hash: argumentHash
         };

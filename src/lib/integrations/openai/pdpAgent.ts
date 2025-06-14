@@ -9,7 +9,6 @@ const openai = new OpenAI({apiKey:OPENAI_API_KEY});
 setDefaultOpenAIClient(openai);
 
 const argumetnSchema = z.object({
-    argument: z.string(),
     pdp: z.string()
 });
 
@@ -35,7 +34,7 @@ const agent = new Agent({
 
 export const runPdpAgent = async (input: string) => {
     const result = await run(agent, input);
-    return result;
+    return result.finalOutput;
 }
 
 
