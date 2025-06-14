@@ -1,6 +1,7 @@
 import { getD1 } from '$lib/server/db';
 import { deleteArgument, updateArgument } from '$lib/server/db/schema';
 import { json, type RequestHandler } from '@sveltejs/kit';
+import { hashText } from '$lib/server/services/hash';
 
 // Update an argument
 export const PATCH: RequestHandler = async ({ request, params }) => {
@@ -14,11 +15,14 @@ export const PATCH: RequestHandler = async ({ request, params }) => {
         const body = await request.json();
         const { argument, pdp, status } = body;
 
-        const updated = await updateArgument(id, {
-            argument,
-            pdp,
-            status,
-        }, d1);
+        const dataToUpdate: { argument?: string; pdp?: string; status?: number, hash?: string } = { pdp, status };
+
+        if (argument) {
+            dataToUpdate.argument = argument;
+            dataToUpdate.hash = hashText(argument.trim().toLowerCase());
+        }
+
+        const updated = await updateArgument(id, dataToUpdate, d1);
 
         if (!updated) {
             return json({ error: 'Argument not found or could not be updated' }, { status: 404 });

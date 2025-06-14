@@ -2,8 +2,8 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 import { runPdpAgent } from '$lib/integrations/openai/pdpAgent';
 import { createArgument } from '$lib/server/db/schema';
-import { hashText } from '$lib/server/services/hash';
 import { getD1 } from '$lib/server/db';
+import { hashText } from '$lib/server/services/hash';
 
 export const POST: RequestHandler = async ({ request }) => {
     const d1 = getD1();
@@ -20,8 +20,6 @@ export const POST: RequestHandler = async ({ request }) => {
 
         const pdpResponse = await runPdpAgent(processedArgument);
 
-        console.log('PDP Agent Response:', JSON.stringify(pdpResponse, null, 2));
-
         if (!pdpResponse || !(pdpResponse.output as any)[0].pdp) {
             console.error('Failed to get PDP interpretation from response:', pdpResponse);
             return json({ error: 'Failed to get PDP interpretation' }, { status: 500 });
@@ -30,7 +28,8 @@ export const POST: RequestHandler = async ({ request }) => {
         const newArgument = await createArgument({
             argument: processedArgument,
             pdp: (pdpResponse.output as any)[0].pdp,
-            status: 0 // default status
+            status: 0, // default status
+            hash: argumentHash
         }, d1);
 
         return json(newArgument, { status: 201 });

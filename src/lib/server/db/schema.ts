@@ -16,6 +16,7 @@ export const hypothesesTable = sqliteTable('hypotheses', {
 export const argumentsTable = sqliteTable('arguments', {
     id: integer('id').primaryKey(),
     argument: text('argument').notNull(),
+    hash: text('hash').notNull().unique(),
     pdp: text('pdp'),
     status: integer('status').notNull(),
     createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
@@ -28,7 +29,7 @@ export const getUserHypotheses = async (userId:string, db:DrizzleD1Database) =>
 export const getUserHypothesisById = async (userId:string, id:number, db:DrizzleD1Database) =>
     await db.select().from(hypothesesTable).where(and(eq(hypothesesTable.userId, userId), eq(hypothesesTable.id, id))).then(h=>h[0]);
 
-export const createArgument = async (data: { argument: string, pdp: string, status: number}, db: DrizzleD1Database) => {
+export const createArgument = async (data: { argument: string, pdp: string, status: number, hash: string}, db: DrizzleD1Database) => {
     return db.insert(argumentsTable).values({
         ...data,
         createdAt: new Date(),
@@ -44,7 +45,7 @@ export const listArguments = async (db: DrizzleD1Database) => {
     return db.select().from(argumentsTable).all();
 }
 
-export const updateArgument = async (id: number, data: { argument?: string, pdp?: string, status?: number }, db: DrizzleD1Database) => {
+export const updateArgument = async (id: number, data: { argument?: string, pdp?: string, status?: number, hash?: string }, db: DrizzleD1Database) => {
     return db.update(argumentsTable).set({
         ...data,
         updatedAt: new Date(),
