@@ -38,6 +38,7 @@ export const PATCH: RequestHandler = async ({ request, params }) => {
 
 // Delete an argument
 export const DELETE: RequestHandler = async ({ params }) => {
+    const d1 = getD1();
     try {
         const id = Number(params.id);
         if (isNaN(id)) {

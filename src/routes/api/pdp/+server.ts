@@ -25,12 +25,16 @@ export const POST: RequestHandler = async ({ request }) => {
             return json({ error: 'Failed to get PDP interpretation' }, { status: 500 });
         }
 
-        const newArgument = await createArgument({
+        const dataToInsert = {
             argument: processedArgument,
             pdp: (pdpResponse.output as any)[0].pdp,
             status: 0, // default status
             hash: argumentHash
-        }, d1);
+        };
+
+        console.log('Data before DB insertion:', dataToInsert);
+
+        const newArgument = await createArgument(dataToInsert, d1);
 
         return json(newArgument, { status: 201 });
 
