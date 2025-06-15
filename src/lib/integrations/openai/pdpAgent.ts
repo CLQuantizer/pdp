@@ -4,9 +4,8 @@ import { run } from '@openai/agents';
 import z from "zod";
 import { env } from "$env/dynamic/private";
 
+export const getOpenAIClient = () => new OpenAI({apiKey:env.OPENAI_API_KEY, baseURL:env.AI_GATEWAY})
 
-const openai = new OpenAI({apiKey:env.OPENAI_API_KEY, baseURL:env.AI_GATEWAY});
-setDefaultOpenAIClient(openai);
 
 const argumetnSchema = z.object({ pdp: z.string()});
 
@@ -33,6 +32,7 @@ const agent = new Agent({
 });
 
 export const runPdpAgent = async (input: string) => {
+    setDefaultOpenAIClient(getOpenAIClient());
     const result = await run(agent, input);
     return result.finalOutput;
 }
