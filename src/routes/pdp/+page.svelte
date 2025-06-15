@@ -25,7 +25,7 @@
 		error = null;
 		try {
 			const returnedArgument: Argument = await ky
-				.post('/api/pdp', { json: { argument: newArgumentText } })
+				.post('/api/pdp', { json: { argument: newArgumentText }, timeout: 30000 })
 				.json();
 			const exists = argumentsList.some((arg) => arg.id === returnedArgument.id);
 
