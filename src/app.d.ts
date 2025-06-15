@@ -1,3 +1,7 @@
+/// <reference types="@cloudflare/workers-types" />
+
+// See https://kit.svelte.dev/docs/types#app
+// for information about these interfaces
 import type {DrizzleD1Database} from "drizzle-orm/d1/driver";
 
 declare global {
@@ -13,7 +17,7 @@ declare global {
 		}
 		interface Platform {
 			env: {
-				d1: D1Database
+				DB: D1Database
 				AI_GATEWAY: string
 				OPENAI_API_KEY: string
 			},
