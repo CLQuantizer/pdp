@@ -24,6 +24,11 @@
       "binding": "OPENAI_API_KEY",
       "store_id": "337da2eaa05c4f06a2946533968c7ca6",
       "secret_name": "OPENAI_API_KEY"
+    },
+    {
+      "binding": "AI_GATEWAY",
+      "store_id": "337da2eaa05c4f06a2946533968c7ca6",
+      "secret_name": "AI_GATEWAY"
     }
   ],
   "routes": [
