@@ -1,11 +1,9 @@
-import { getD1 } from '$lib/server/db';
 import { deleteArgument, updateArgument } from '$lib/server/db/schema';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { hashText } from '$lib/server/services/hash';
 
 // Update an argument
-export const PATCH: RequestHandler = async ({ request, params }) => {
-    const d1 = getD1();
+export const PATCH: RequestHandler = async ({ request, locals, params }) => {
     try {
         const id = Number(params.id);
         if (isNaN(id)) {
@@ -22,7 +20,7 @@ export const PATCH: RequestHandler = async ({ request, params }) => {
             dataToUpdate.hash = hashText(argument.trim().toLowerCase());
         }
 
-        const updated = await updateArgument(id, dataToUpdate, d1);
+        const updated = await updateArgument(id, dataToUpdate, locals.d1);
 
         if (!updated) {
             return json({ error: 'Argument not found or could not be updated' }, { status: 404 });
@@ -37,15 +35,14 @@ export const PATCH: RequestHandler = async ({ request, params }) => {
 };
 
 // Delete an argument
-export const DELETE: RequestHandler = async ({ params }) => {
-    const d1 = getD1();
+export const DELETE: RequestHandler = async ({ params, locals }) => {
     try {
         const id = Number(params.id);
         if (isNaN(id)) {
             return json({ error: 'Invalid ID' }, { status: 400 });
         }
 
-        const deleted = await deleteArgument(id, d1);
+        const deleted = await deleteArgument(id, locals.d1);
 
         if (!deleted) {
             return json({ error: 'Argument not found' }, { status: 404 });

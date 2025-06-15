@@ -16,7 +16,7 @@
       "binding": "DB",
       "database_name": "think",
       "database_id": "aa8eef38-44b8-46e3-804c-d683fc5e177d",
-      "migrations_dir": "drizzle/migrations"
+      "preview_database_id": "DB"
     }
   ],
   "secrets_store_secrets": [

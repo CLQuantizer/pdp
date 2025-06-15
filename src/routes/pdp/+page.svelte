@@ -10,8 +10,8 @@
 		argument: string;
 		pdp: string | null;
 		status: number;
-		createdAt: string;
-		updatedAt: string;
+		createdAt: Date;
+		updatedAt: Date;
 	};
 
 	let argumentsList: Argument[] = data.arguments;
@@ -150,14 +150,14 @@
 							name="pdp"
 							rows="10"
 							class="w-full p-2 bg-input border rounded-md"
-							value={arg.pdp}></textarea>
+							value={arg.pdp || ''}></textarea>
 
 						<label for="edit-status-{arg.id}" class="block mt-4 mb-2 font-medium">Status:</label>
 						<input
 							type="number"
 							id="edit-status-{arg.id}"
 							name="status"
-							value={arg.status}
+							value={`${arg.status}`}
 							class="w-full p-2 bg-input border rounded-md"
 						/>
 

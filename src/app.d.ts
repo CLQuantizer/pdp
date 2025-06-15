@@ -5,12 +5,17 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			// DrizzleD1Database or
-			db: DrizzleD1Database
-			userId: string
+			d1: DrizzleD1Database
+			env: {
+				AI_GATEWAY: string
+				OPENAI_API_KEY: string
+			}
 		}
 		interface Platform {
-			env?: {
-				DB: D1Database
+			env: {
+				d1: D1Database
+				AI_GATEWAY: string
+				OPENAI_API_KEY: string
 			},
 			caches: CacheStorage & { default: Cache }
 		}
