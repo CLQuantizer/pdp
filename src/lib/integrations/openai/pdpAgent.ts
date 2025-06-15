@@ -32,6 +32,7 @@ const agent = new Agent({
 });
 
 export const runPdpAgent = async (input: string) => {
+    console.log("running pdp agent baseURL:", env.AI_GATEWAY)
     setDefaultOpenAIClient(getOpenAIClient());
     const result = await run(agent, input);
     return result.finalOutput;
