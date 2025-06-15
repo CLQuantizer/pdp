@@ -9,9 +9,13 @@ const setupDatabase = async ({ event, resolve }:any) => {
     const env = event.platform?.env;
     if (!env) throw new Error("env not found");
     event.locals.env = env;
-    event.locals.d1 = drizzle(env.d1);
+    event.locals.d1 = drizzle(env.DB);
     return resolve(event);
 };
+
+export const handle = sequence(
+    setupDatabase
+);
 
 // const handleUserSession: Handle = async ({ event, resolve }) => {
 //     let userId = event.cookies.get(USER_ID);
@@ -29,7 +33,3 @@ const setupDatabase = async ({ event, resolve }:any) => {
 //     event.locals.userId = userId;
 //     return resolve(event);
 // };
-
-export const handle = sequence(
-    setupDatabase
-);
