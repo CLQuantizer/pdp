@@ -8,9 +8,7 @@ import { env } from "$env/dynamic/private";
 const openai = new OpenAI({apiKey:env.OPENAI_API_KEY, baseURL:env.AI_GATEWAY});
 setDefaultOpenAIClient(openai);
 
-const argumetnSchema = z.object({
-    pdp: z.string()
-});
+const argumetnSchema = z.object({ pdp: z.string()});
 
 const agent = new Agent({
   name: 'Pdp searcher',
