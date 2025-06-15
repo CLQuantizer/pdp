@@ -1,10 +1,20 @@
 <script lang="ts">
 	import { marked } from 'marked';
 	import { onMount } from 'svelte';
+	import ky from 'ky';
 
 	export let data;
 
-	let argumentsList = data.arguments;
+	type Argument = {
+		id: number;
+		argument: string;
+		pdp: string | null;
+		status: number;
+		createdAt: string;
+		updatedAt: string;
+	};
+
+	let argumentsList: Argument[] = data.arguments;
 	let editingId: number | null = null;
 	let newArgumentText = '';
 	let isLoading = false;
@@ -13,20 +23,23 @@
 	async function createArgument() {
 		isLoading = true;
 		error = null;
-		const response = await fetch('/api/pdp', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ argument: newArgumentText })
-		});
-		isLoading = false;
+		try {
+			const returnedArgument: Argument = await ky
+				.post('/api/pdp', { json: { argument: newArgumentText } })
+				.json();
+			const exists = argumentsList.some((arg) => arg.id === returnedArgument.id);
 
-		if (response.ok) {
-			const newArgument = await response.json();
-			argumentsList = [...argumentsList, newArgument];
-			newArgumentText = '';
-		} else {
-			const res = await response.json();
+			if (!exists) {
+				argumentsList = [...argumentsList, returnedArgument];
+				newArgumentText = '';
+			} else {
+				error = 'This argument already exists.';
+			}
+		} catch (e: any) {
+			const res = await e.response.json();
 			error = res.error || 'Failed to create argument.';
+		} finally {
+			isLoading = false;
 		}
 	}
 
@@ -41,36 +54,31 @@
 		const pdp = formData.get('pdp') as string;
 		const status = Number(formData.get('status'));
 
-		const response = await fetch(`/api/pdp/${id}`, {
-			method: 'PATCH',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ argument, pdp, status })
-		});
-		isLoading = false;
-
-		if (response.ok) {
-			const updatedArgument = await response.json();
-			argumentsList = argumentsList.map((arg: any) => (arg.id === id ? updatedArgument : arg));
+		try {
+			const updatedArgument: Argument = await ky
+				.patch(`/api/pdp/${id}`, { json: { argument, pdp, status } })
+				.json();
+			argumentsList = argumentsList.map((arg) => (arg.id === id ? updatedArgument : arg));
 			editingId = null;
-		} else {
-			const res = await response.json();
+		} catch (e: any) {
+			const res = await e.response.json();
 			error = res.error || 'Failed to update argument.';
+		} finally {
+			isLoading = false;
 		}
 	}
 
 	async function deleteArgument(id: number) {
 		isLoading = true;
 		error = null;
-		const response = await fetch(`/api/pdp/${id}`, {
-			method: 'DELETE'
-		});
-		isLoading = false;
-
-		if (response.ok) {
-			argumentsList = argumentsList.filter((arg: any) => arg.id !== id);
-		} else {
-			const res = await response.json();
+		try {
+			await ky.delete(`/api/pdp/${id}`);
+			argumentsList = argumentsList.filter((arg) => arg.id !== id);
+		} catch (e: any) {
+			const res = await e.response.json();
 			error = res.error || 'Failed to delete argument.';
+		} finally {
+			isLoading = false;
 		}
 	}
 </script>
