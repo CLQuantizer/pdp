@@ -12,7 +12,7 @@ const argumetnSchema = z.object({ pdp: z.string()});
 
 const agent = new Agent({
   name: 'Pdp searcher',
-  model: "gpt-4o",
+  model: "gpt-o3",
   outputType: argumetnSchema,
   tools: [fileSearchTool(["vs_6845e8da386c8191b55583859a9d93fe"], {includeSearchResults:true})],
   instructions:
