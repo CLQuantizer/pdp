@@ -3,8 +3,9 @@ import { Agent, fileSearchTool, setDefaultOpenAIClient } from '@openai/agents';
 import { run } from '@openai/agents';
 import z from "zod";
 import { env } from "$env/dynamic/private";
+import { AI_GATEWAY } from "$env/static/private";
 
-export const getOpenAIClient = () => new OpenAI({apiKey:env.OPENAI_API_KEY, baseURL:env.AI_GATEWAY})
+export const getOpenAIClient = () => new OpenAI({apiKey:env.OPENAI_API_KEY, baseURL:AI_GATEWAY})
 
 
 const argumetnSchema = z.object({ pdp: z.string()});
