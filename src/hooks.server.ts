@@ -2,7 +2,7 @@ import { sequence } from "@sveltejs/kit/hooks";
 import { drizzle } from "drizzle-orm/d1";
 
 export const handleError = ({ error }:any) => {
-    return { message: error};
+    return { message: "Internal Server Error 50008"};
 };
 
 const setupDatabase = async ({ event, resolve }:any) => {
