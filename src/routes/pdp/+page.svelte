@@ -56,7 +56,7 @@
 
 		try {
 			const updatedArgument: Argument = await ky
-				.patch(`/api/pdp/${id}`, { json: { argument, pdp, status } })
+				.patch(`/api/pdp/${id}`, { json: { argument, pdp, status }, timeout: 30000 })
 				.json();
 			argumentsList = argumentsList.map((arg) => (arg.id === id ? updatedArgument : arg));
 			editingId = null;
