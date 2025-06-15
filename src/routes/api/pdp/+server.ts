@@ -5,9 +5,8 @@ import { createArgument, getArgumentByHash } from '$lib/server/db/schema';
 import { hashText } from '$lib/server/services/hash';
 
 export const POST: RequestHandler = async ({ request, locals }) => {
-	const { OPENAI_API_KEY, AI_GATEWAY } = locals.env;
 	try {
-		const body = await request.json();
+		const body = await request.json() as { argument: string };
 		const { argument } = body;
 
 		if (!argument || typeof argument !== 'string') {
@@ -23,7 +22,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 			return json(existingArgument);
 		}
 
-		const pdpResponse = await runPdpAgent(processedArgument, OPENAI_API_KEY, AI_GATEWAY);
+		const pdpResponse = await runPdpAgent(processedArgument);
 
 		if (!pdpResponse) {
 			console.error('Failed to get PDP interpretation from response:', JSON.stringify(pdpResponse, null, 2));

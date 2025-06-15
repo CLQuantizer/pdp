@@ -2,8 +2,9 @@ import OpenAI from "openai";
 import { Agent, fileSearchTool, setDefaultOpenAIClient } from '@openai/agents';
 import { run } from '@openai/agents';
 import z from "zod";
+import { AI_GATEWAY, OPENAI_API_KEY } from "$env/static/private";
 
-export const getOpenAIClient = (OPENAI_API_KEY:string, AI_GATEWAY:string) => 
+export const getOpenAIClient = () => 
     new OpenAI({apiKey:OPENAI_API_KEY, baseURL:AI_GATEWAY})
 
 
@@ -31,8 +32,8 @@ const agent = new Agent({
     `
 });
 
-export const runPdpAgent = async (input: string, OPENAI_API_KEY:string, AI_GATEWAY:string) => {
-    setDefaultOpenAIClient(getOpenAIClient(OPENAI_API_KEY, AI_GATEWAY));
+export const runPdpAgent = async (input: string) => {
+    setDefaultOpenAIClient(getOpenAIClient());
     const result = await run(agent, input);
     return result.finalOutput;
 }
