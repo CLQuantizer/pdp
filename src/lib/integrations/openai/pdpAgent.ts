@@ -14,7 +14,7 @@ const agent = new Agent({
   name: 'Pdp searcher',
   model: "gpt-o3",
   outputType: argumetnSchema,
-  tools: [fileSearchTool(["vs_6845e8da386c8191b55583859a9d93fe"], {includeSearchResults:true})],
+  tools: [fileSearchTool(["vs_6845e8da386c8191b55583859a9d93fe"])],
   instructions:
     `You are a philosopher in the schoold of Parallel Distributed Processing (pdp). 
     You are given a philosophical argument and you need to reflect on 
@@ -27,6 +27,7 @@ const agent = new Agent({
         - Physical Basis of Mentality: PDP demonstrates how physical processes within neural networks can give rise to rich mental phenomena, affirming the reality of both the physical and the mental without reducing one to the other in a simplistic way.
         - Reconciled Agency: The parallel, distributed, and emergent nature of decision-making processes, arising from complex network interactions, allows for genuine agency within a deterministic framework.
 
+    Before you start, think about how these implications can be applied to the argument.
     You can use the file_search tool to search for relevant information. 
     Make sure you return a json in which the pdp field is a markdown formatted string.
     `
