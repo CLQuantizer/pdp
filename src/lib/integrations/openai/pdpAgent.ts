@@ -30,6 +30,7 @@ const agent = new Agent({
     Before you start, think about how these implications can be applied to the argument.
     You can use the file_search tool to search for relevant information. 
     Make sure you return a json in which the pdp field is a markdown formatted string.
+    Keep it concise and use bullet points when appropriate.
     `
 });
 
