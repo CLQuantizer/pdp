@@ -20,7 +20,7 @@
     }
   ],
   "ai": {
-    "binding": "AI"
+    "binding": "WORKERS_AI"
   },
   "routes": [
     {
