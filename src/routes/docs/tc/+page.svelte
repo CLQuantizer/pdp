@@ -1,49 +1,54 @@
-<div class="flex flex-col gap-2 p-2">
+<div class="prose max-w-none">
+    <h1>Terms and Conditions for PDP Philosophy Platform</h1>
+    <p>Last updated: July 16, 2025</p>
+
     <h2>1. Acceptance of Terms</h2>
-    <p class="important">
-        By accessing and using this French reading App, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our service.
-    </p>
-
-    <h2>2. Service Description</h2>
     <p>
-        We provide access to free, open-source French books along with additional features such as word saving and sentence saving.
-        These additional features are subject to a service fee.
+        By accessing or using the PDP Philosophy Platform ("the Service"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, you may not use the Service.
     </p>
 
-    <h2>3. Content</h2>
-    <p>3.1. The books available on this platform are open-source and free to access.</p>
-    <p>3.2. We do not claim ownership of the book content and respect all applicable copyright laws.</p>
+    <h2>2. Description of Service</h2>
+    <p>
+        The PDP Philosophy Platform provides users with an AI-powered tool to analyze philosophical arguments through the lens of Parallel Distributed Processing (PDP) theory. You may submit arguments and receive AI-generated analysis.
+    </p>
 
-    <h2>4. Per-Book Fee</h2>
-    <p>4.1. A fee is charged for access to each individual book.</p>
-    <p>4.2. The per-book fee is non-refundable once the features have been activated for that specific book.</p>
-    <p>4.3. The exact amount of the per-book fee will be clearly displayed before purchase for each book.</p>
+    <h2>3. User-Generated Content</h2>
+    <p>
+        You are solely responsible for the philosophical arguments and any other content you submit to the Service ("User Content"). You retain all ownership rights to your User Content. However, by submitting User Content, you grant the Service a worldwide, non-exclusive, royalty-free license to use, reproduce, process, and display such content for the purpose of operating, providing, and improving the Service.
+    </p>
 
-    <h2>5. User Accounts</h2>
-    <p>5.1. You may be required to create an account to access certain features.</p>
-    <p>5.2. You are responsible for maintaining the confidentiality of your account information.</p>
+    <h2>4. Prohibited Conduct</h2>
+    <p>You agree not to use the Service to:</p>
+    <ul>
+        <li>Submit any content that is unlawful, harmful, defamatory, or otherwise objectionable.</li>
+        <li>Impersonate any person or entity or falsely state or otherwise misrepresent your affiliation with a person or entity.</li>
+        <li>Transmit any material that contains software viruses or any other computer code, files, or programs designed to interrupt, destroy, or limit the functionality of any computer software or hardware.</li>
+    </ul>
 
-    <h2>6. Prohibited Activities</h2>
-    <p>Users are prohibited from:</p>
-    <p>6.1. Attempting to circumvent the service fee or access paid features without proper payment.</p>
-    <p>6.2. Distributing, copying, or reproducing the additional features or functionality of our service.</p>
-    <p>6.3. Using the service for any unlawful purpose or in violation of these terms.</p>
+    <h2>5. Intellectual Property</h2>
+    <p>
+        All rights, title, and interest in and to the Service (excluding User Content), including all associated intellectual property rights, are and will remain the exclusive property of the PDP Philosophy Platform and its licensors. The AI-generated analyses are part of the Service.
+    </p>
 
-    <h2>7. Disclaimer of Warranties</h2>
-    <p>7.1. The service is provided "as is" without any warranties, express or implied.</p>
-    <p>7.2. We do not guarantee the accuracy, completeness, or reliability of the content provided.</p>
+    <h2>6. Disclaimer of Warranties</h2>
+    <p>
+        The Service is provided on an "as is" and "as available" basis. The PDP Philosophy Platform makes no warranty that the Service will meet your requirements or be available on an uninterrupted, secure, or error-free basis. The AI-generated analyses are for informational and philosophical exploration purposes only and should not be considered expert or factual advice.
+    </p>
 
-    <h2>8. Limitation of Liability</h2>
-    <p>We shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the service.</p>
+    <h2>7. Limitation of Liability</h2>
+    <p>
+        In no event shall the PDP Philosophy Platform be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
+    </p>
 
-    <h2>9. Changes to Terms</h2>
-    <p>We reserve the right to modify these Terms and Conditions at any time. Continued use of the service after changes constitutes acceptance of the new terms.</p>
+    <h2>8. Changes to Terms</h2>
+    <p>
+        We reserve the right to modify these Terms at any time. We will provide notice of any changes by posting the new Terms on this page.
+    </p>
 
-    <h2>10. Governing Law</h2>
-    <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of [Your Jurisdiction].</p>
-
-    <h2>11. Contact Information</h2>
-    <p>For any questions regarding these Terms and Conditions, please contact us at [Your Contact Information].</p>
-
-    <p><em>Last updated: December 2023 </em></p>
+    <h2>9. Contact Us</h2>
+    <p>
+        If you have any questions about these Terms, please contact us.
+    </p>
+    <hr/>
+    <p><em>This is a sample Terms and Conditions document and not legal advice.</em></p>
 </div>

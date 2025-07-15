@@ -1,77 +1,62 @@
-<h1>Privacy Policy</h1>
-<p>Last updated: December 2023</p>
+<div class="prose max-w-none">
+    <h1>Privacy Policy for PDP Philosophy Platform</h1>
+    <p>Last updated: July 16, 2025</p>
 
-<section>
     <h2>1. Introduction</h2>
-    <p>Welcome to mywords.io ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our French reading app and related services.</p>
-</section>
+    <p>
+        Welcome to the PDP Philosophy Platform ("the Service"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service.
+    </p>
 
-<section>
     <h2>2. Information We Collect</h2>
-    <h3>2.1 Personal Information</h3>
-    <p>We may collect the following types of personal information:</p>
+    <p>We may collect information about you in a variety of ways. The information we may collect on the Service includes:</p>
     <ul>
-        <li>Name</li>
-        <li>Email address</li>
-        <li>Payment information (for per-book fees)</li>
-        <li>User account details</li>
+        <li>
+            <strong>User-Provided Content:</strong> We collect the philosophical arguments and any other text you submit to the platform for analysis.
+        </li>
+        <li>
+            <strong>Usage Data:</strong> We may automatically collect information about how you access and use the Service, such as your IP address, browser type, and pages visited. This data is used for analytics and to improve the service.
+        </li>
     </ul>
 
-    <h3>2.2 Usage Data</h3>
-    <p>We automatically collect certain information about your device and how you interact with our app, including:</p>
-    <ul>
-        <li>IP address</li>
-        <li>Device type and operating system</li>
-        <li>App usage statistics</li>
-        <li>Books accessed and read</li>
-        <li>Words and sentences saved</li>
-    </ul>
-</section>
-
-<section>
     <h2>3. How We Use Your Information</h2>
-    <p>We use your information for the following purposes:</p>
+    <p>We use the information we collect to:</p>
     <ul>
-        <li>To provide and maintain our service</li>
-        <li>To process payments for per-book fees</li>
-        <li>To improve and personalize your experience</li>
-        <li>To communicate with you about your account or the service</li>
-        <li>To detect, prevent, and address technical issues</li>
+        <li>Provide, operate, and maintain our Service.</li>
+        <li>Process your submitted arguments and provide you with AI-generated analysis.</li>
+        <li>Improve, personalize, and expand our Service.</li>
+        <li>Monitor and analyze usage and trends to improve your experience.</li>
     </ul>
-</section>
 
-<section>
-    <h2>4. Data Storage and Security</h2>
-    <p>We implement appropriate technical and organizational measures to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
-</section>
-
-<section>
-    <h2>5. Third-Party Services</h2>
-    <p>We may use third-party services to facilitate our service, process payments, or analyze how our service is used. These third parties have access to your personal information only to perform these tasks on our behalf.</p>
-</section>
-
-<section>
-    <h2>6. Your Rights</h2>
-    <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+    <h2>4. Disclosure of Your Information</h2>
+    <p>We may share information we have collected about you in certain situations:</p>
     <ul>
-        <li>The right to access the personal information we hold about you</li>
-        <li>The right to request correction or deletion of your personal information</li>
-        <li>The right to object to or restrict processing of your personal information</li>
-        <li>The right to data portability</li>
+        <li>
+            <strong>With Service Providers:</strong> We may share your information with third-party vendors that perform services for us or on our behalf, such as data analysis and AI model providers (e.g., OpenAI). We share the arguments you submit with them to generate the analysis.
+        </li>
+        <li>
+            <strong>For Legal Reasons:</strong> We may disclose your information if required to do so by law or in response to valid requests by public authorities.
+        </li>
     </ul>
-</section>
 
-<section>
-    <h2>7. Children's Privacy</h2>
-    <p>Our service is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
-</section>
+    <h2>5. Data Security</h2>
+    <p>
+        We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable.
+    </p>
 
-<section>
-    <h2>8. Changes to This Privacy Policy</h2>
-    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-</section>
+    <h2>6. Your Data Rights</h2>
+    <p>
+        Depending on your location, you may have certain rights regarding your personal information, such as the right to access, correct, or delete your data. Please contact us to exercise these rights.
+    </p>
 
-<section>
-    <h2>9. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at: info@mywords.io</p>
-</section>
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>
+        We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+    </p>
+    
+    <h2>8. Contact Us</h2>
+    <p>
+        If you have any questions about this Privacy Policy, please contact us.
+    </p>
+    <hr/>
+    <p><em>This is a sample Privacy Policy and not legal advice. You should consult with a legal professional for your specific needs.</em></p>
+</div>

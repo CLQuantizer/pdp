@@ -12,8 +12,16 @@ import {MoonStar, Sun} from "lucide-svelte";
     </button>
 </div>
 
-<div class="flex justify-center p-2">
-    <div class="w-full p-2 flex flex-col">
-        <slot></slot>
-    </div>
+<div class="p-4 flex gap-4">
+    <aside class="w-1/4">
+        <nav class="sticky top-4 flex flex-col gap-2">
+            <a href="/docs/introduction" class="text-lg font-semibold hover:underline">Introduction</a>
+            <a href="/docs/technical" class="text-lg font-semibold hover:underline">Technical Details</a>
+            <a href="/docs/privacy" class="text-lg font-semibold hover:underline">Privacy Policy</a>
+            <a href="/docs/tc" class="text-lg font-semibold hover:underline">Terms & Conditions</a>
+        </nav>
+    </aside>
+    <main class="w-3/4">
+        <slot />
+    </main>
 </div>
