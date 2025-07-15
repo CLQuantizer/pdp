@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { marked } from 'marked';
-	import { onMount } from 'svelte';
 	import ky from 'ky';
 
 	export let data;
