@@ -1,6 +1,6 @@
 <script lang="ts">
     import { marked } from 'marked';
-    export let data;
+    let { data } = $props();
 </script>
 <div>
   <div class="bg-background text-foreground">
@@ -19,17 +19,23 @@
 
       <!-- Core Concepts -->
       <table class="w-full mb-4 border border-border bg-card text-card-foreground">
-        <tr>
-          <td class="p-2">
-            <h2 class="text-xl font-semibold mb-2">A New Philosophical Paradigm</h2>
-            <p class="text-muted-foreground text-sm">
-              In 1986, the PDP model emerged as a philosophical breakthrough that challenged centuries of dualistic thinking about the mind. By proposing that consciousness arises from the interaction of simple processing units, it bridged the gap between materialism and idealism.
-            </p>
-            <p class="text-muted-foreground text-sm mt-2">
-              This revolutionary framework not only transformed cognitive science but also provided a new lens through which to understand the nature of consciousness itself.
-            </p>
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td class="p-2">
+              <h2 class="text-xl font-semibold mb-2">A New Philosophical Paradigm</h2>
+              <p class="text-muted-foreground text-sm">
+                In 1986, the PDP model emerged as a philosophical breakthrough that challenged
+                centuries of dualistic thinking about the mind. By proposing that consciousness
+                arises from the interaction of simple processing units, it bridged the gap between
+                materialism and idealism.
+              </p>
+              <p class="text-muted-foreground text-sm mt-2">
+                This revolutionary framework not only transformed cognitive science but also provided
+                a new lens through which to understand the nature of consciousness itself.
+              </p>
+            </td>
+          </tr>
+        </tbody>
       </table>
 
       <!-- Philosophical Implications -->
@@ -84,25 +90,34 @@
 
       <!-- Impact Section -->
       <table class="w-full mb-4 border border-border bg-card text-card-foreground">
-        <tr>
-          <td colspan="3" class="p-2">
-            <h2 class="text-xl font-semibold text-center">Philosophical Legacy</h2>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/3 p-2">
-            <strong class="text-foreground text-sm">Philosophy of Mind:</strong><br>
-            <span class="text-muted-foreground text-sm">Provided a new framework for understanding consciousness and mental states</span>
-          </td>
-          <td class="w-1/3 p-2">
-            <strong class="text-foreground text-sm">Epistemology:</strong><br>
-            <span class="text-muted-foreground text-sm">Revolutionized our understanding of how knowledge is acquired and represented</span>
-          </td>
-          <td class="w-1/3 p-2">
-            <strong class="text-foreground text-sm">Metaphysics:</strong><br>
-            <span class="text-muted-foreground text-sm">Offered new insights into the nature of reality and consciousness</span>
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td colspan="3" class="p-2">
+              <h2 class="text-xl font-semibold text-center">Philosophical Legacy</h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="w-1/3 p-2">
+              <strong class="text-foreground text-sm">Philosophy of Mind:</strong><br />
+              <span class="text-muted-foreground text-sm"
+                >Provided a new framework for understanding consciousness and mental states</span
+              >
+            </td>
+            <td class="w-1/3 p-2">
+              <strong class="text-foreground text-sm">Epistemology:</strong><br />
+              <span class="text-muted-foreground text-sm"
+                >Revolutionized our understanding of how knowledge is acquired and
+                represented</span
+              >
+            </td>
+            <td class="w-1/3 p-2">
+              <strong class="text-foreground text-sm">Metaphysics:</strong><br />
+              <span class="text-muted-foreground text-sm"
+                >Offered new insights into the nature of reality and consciousness</span
+              >
+            </td>
+          </tr>
+        </tbody>
       </table>
 
       <!-- Classical Problems Section -->
