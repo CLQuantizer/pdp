@@ -19,6 +19,9 @@
       "preview_database_id": "DB"
     }
   ],
+  "ai": {
+    "binding": "AI"
+  },
   "routes": [
     {
       "pattern": "thinkvector.org",
